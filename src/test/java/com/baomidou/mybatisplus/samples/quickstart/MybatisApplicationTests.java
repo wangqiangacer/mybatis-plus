@@ -8,8 +8,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
+import com.baomidou.mybatisplus.samples.quickstart.service.LoanProductService;
 import com.baomidou.mybatisplus.samples.quickstart.service.UserSerivce;
 import com.baomidou.mybatisplus.samples.quickstart.service.UserServiceImpl;
 import com.jayway.jsonpath.Criteria;
@@ -204,6 +206,9 @@ public class MybatisApplicationTests {
             System.out.println( "用户已经存在");
         }
     }
+
+    @Autowired
+    private LoanProductService loanProductService;
     @Test
     public  void findList(){
         Page page = new Page<>(1, 3);
@@ -217,5 +222,14 @@ public class MybatisApplicationTests {
 //        List<String> list = records.stream().map(User::getName).collect(Collectors.toList());
 //        list.stream().forEach(s -> System.out.println(s));
 
+    }
+    @Test
+    public  void test111(){
+        QueryWrapper<LoanProduct> wrapper = new QueryWrapper<>();
+        wrapper.eq("status", 2);
+        wrapper.eq("del", 0);
+        wrapper.gt("api_category", 0);
+        List<LoanProduct> productList = loanProductService.list(wrapper);
+        productList.stream().forEach(s-> System.out.println(s));
     }
 }
