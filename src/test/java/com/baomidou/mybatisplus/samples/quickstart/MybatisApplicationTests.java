@@ -11,9 +11,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
-import com.baomidou.mybatisplus.samples.quickstart.service.LoanProductService;
-import com.baomidou.mybatisplus.samples.quickstart.service.UserSerivce;
-import com.baomidou.mybatisplus.samples.quickstart.service.UserServiceImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.*;
 import com.jayway.jsonpath.Criteria;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
+import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -33,6 +32,8 @@ public class MybatisApplicationTests {
     private UserMapper  userMapper;
     @Autowired
     private UserServiceImpl userServiceimpl;
+    @Autowired
+    private CityConstantServiceImpl cityConstantService;
     @Test
     public void contextLoads() {
         List<User> selectList = userMapper.selectList(null);
@@ -231,5 +232,35 @@ public class MybatisApplicationTests {
         wrapper.gt("api_category", 0);
         List<LoanProduct> productList = loanProductService.list(wrapper);
         productList.stream().forEach(s-> System.out.println(s));
+    }
+    @Test
+    public  void readFile() throws Exception{
+        try{
+            String encoding="UTF-8"; //字符编码
+
+            File f = new File("");
+
+            if(f.isFile() && f.exists()){
+
+
+                InputStreamReader read = new InputStreamReader (new FileInputStream(f),encoding);
+
+
+                BufferedReader   in   =   new   BufferedReader(read);
+                String   line;
+                while((line   =   in.readLine())!=null) {
+                    System.out.println(line);
+                }
+
+                read.close();
+            }
+
+        }
+        catch(Exception e){
+            System.out.println("读取文件内容操作出错");
+            e.printStackTrace();
+        }
+
+
     }
 }
