@@ -1,7 +1,9 @@
-package com.baomidou.mybatisplus.samples.quickstart;
+package com.baomidou.mybatisplus.samples.quickstart.controller;
 
 import com.baomidou.mybatisplus.samples.quickstart.domain.CityConstant;
+import com.baomidou.mybatisplus.samples.quickstart.domain.DuanZi;
 import com.baomidou.mybatisplus.samples.quickstart.service.CityConstantServiceImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.DuanZiImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,7 +21,10 @@ import java.util.regex.Pattern;
 @RequestMapping("/city")
 @RestController
 @Slf4j
-public class controller {
+public class CityController {
+
+    @Autowired
+    private DuanZiImpl duanziImpl;
 
     @Autowired
     private CityConstantServiceImpl cityConstantService;
@@ -34,7 +39,7 @@ public class controller {
                 String   line;
 
                 while((line   =   in.readLine())!=null) {
-                   // System.out.println(line);
+                    // System.out.println(line);
                     Pattern pattern = Pattern.compile(line);
                     String str = "西城区";
                     Matcher m = pattern.matcher(str);
