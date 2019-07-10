@@ -14,12 +14,12 @@ public class JsonDemo {
         try {
             URL url=new URL("http://www.52maps.com/china_city.php");
             Document document = Jsoup.parse(url, 100000);
-            //System.out.println(document);
-            Elements elements = document.select("a[target='_blank']");
+            System.out.println(document);
+//            Elements elements = document.select("a[target='_blank']");
 //            for (Element element : elements) {
 //                System.out.println(element.text());
 //            }
-            System.out.println(elements);
+//            System.out.println(elements);
         } catch (IOException e) {
             e.printStackTrace();
         }

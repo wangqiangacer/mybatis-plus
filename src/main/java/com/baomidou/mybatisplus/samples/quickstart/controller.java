@@ -54,17 +54,36 @@ public class controller {
             URL url=new URL("http://www.52maps.com/china_city.php");
             Document document = Jsoup.parse(url, 100000);
             Elements elements = document.select("a[target='_blank']");
-
             for (Element element : elements) {
                 CityConstant cityConstant = new CityConstant();
                 String time = System.currentTimeMillis()+"";
                 cityConstant.setId(Integer.parseInt(time.substring(7,13)));
                 String cityName = element.text();
+                if("河北区".equals(cityName)){
+                    continue;
+                }
                 cityConstant.setCityName(cityName);
                 cityConstantService.save(cityConstant);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/zhixiashi")
+    public  void getCityWith(){
+        String[] cityNames={"天津市","北京市","上海市","重庆市",};
+        for (String cityName : cityNames) {
+            CityConstant cityConstant = new CityConstant();
+            String time = System.currentTimeMillis()+"";
+            cityConstant.setId(Integer.parseInt(time.substring(7,13)));
+            cityConstant.setCityName(cityName);
+            cityConstantService.save(cityConstant);
         }
     }
 }
