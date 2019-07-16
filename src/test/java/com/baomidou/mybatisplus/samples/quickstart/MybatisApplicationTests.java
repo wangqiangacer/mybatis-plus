@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.samples.quickstart.Common.PageModel;
 import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
@@ -237,30 +238,49 @@ public class MybatisApplicationTests {
     public  void readFile() throws Exception{
         try{
             String encoding="UTF-8"; //字符编码
-
             File f = new File("");
-
             if(f.isFile() && f.exists()){
-
-
                 InputStreamReader read = new InputStreamReader (new FileInputStream(f),encoding);
-
-
                 BufferedReader   in   =   new   BufferedReader(read);
                 String   line;
                 while((line   =   in.readLine())!=null) {
                     System.out.println(line);
                 }
-
                 read.close();
             }
-
         }
         catch(Exception e){
             System.out.println("读取文件内容操作出错");
             e.printStackTrace();
         }
+    }
+    @Test
+    public  void findPages(){
+        //分页查询
+        Page<User> page = new Page<>(1, 3);
+        IPage<User> iPage = userMapper.selectPage(page, Wrappers.<User>lambdaQuery().orderByDesc(User::getId));
+        PageModel pageModel = PageModel.buildByIPage(iPage);
+        System.out.println(pageModel.getData());
+    }
+    @Test
+    public  void testCompareAge(){
+        List<User> list = userMapper.selectList(null);
+        //按照年龄排序
+        Comparator<User> comparing = Comparator.comparing(User::getAge);
+        List<User> users = list.stream().sorted(comparing).collect(Collectors.toList());
+        users.stream().forEach(user -> System.out.println(user));
+    }
 
+    //模糊查询加分页
+    @Test
+    public  void findLikePage(){
+        Page<User> page = new Page<>(1, 3);
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        String name="Tom";
+        Pattern pattern=Pattern.compile("^.*"+name+".*$", Pattern.CASE_INSENSITIVE);
+        Criteria criteria=Criteria.where("name").regex(pattern);
+
+        //userMapper.selectList(page,);
 
     }
 }
