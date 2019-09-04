@@ -11,7 +11,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.samples.quickstart.Common.PageModel;
 import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
+import com.baomidou.mybatisplus.samples.quickstart.domain.WindowTab;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
+import com.baomidou.mybatisplus.samples.quickstart.mapper.WindowTabMapper;
 import com.baomidou.mybatisplus.samples.quickstart.service.*;
 import com.jayway.jsonpath.Criteria;
 import org.junit.Test;
@@ -35,6 +37,8 @@ public class MybatisApplicationTests {
     private UserServiceImpl userServiceimpl;
     @Autowired
     private CityConstantServiceImpl cityConstantService;
+    @Autowired
+    private WindowTabMapper windowTabMapper;
     @Test
     public void contextLoads() {
         List<User> selectList = userMapper.selectList(null);
@@ -281,6 +285,16 @@ public class MybatisApplicationTests {
         Criteria criteria=Criteria.where("name").regex(pattern);
 
         //userMapper.selectList(page,);
+
+    }
+    @Test
+    public void findWindowTab(){
+        Page<WindowTab> page = new Page<>(1, 10);
+        QueryWrapper<WindowTab> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("name","关于");
+        queryWrapper.orderByAsc("update_time");
+        IPage<WindowTab> windowTabIPage = windowTabMapper.selectPage(page, queryWrapper);
+        windowTabIPage.getRecords().stream().forEach(windowTab -> System.out.println(windowTab));
 
     }
 }

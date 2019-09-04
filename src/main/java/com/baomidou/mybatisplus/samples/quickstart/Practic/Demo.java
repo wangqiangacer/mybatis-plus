@@ -1,20 +1,24 @@
 package com.baomidou.mybatisplus.samples.quickstart.Practic;
 
+import com.baomidou.mybatisplus.samples.quickstart.utils.DateUtils;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Demo {
     public static void main(String[] args) {
-        List languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
-        List list=new ArrayList();
-       languages.stream().forEach(s->{
-           if(languages.size()>0){
-                list.add(s);
-           }
-       });
+//        List languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
+//        List list=new ArrayList();
+//       languages.stream().forEach(s->{
+//           if(languages.size()>0){
+//                list.add(s);
+//           }
+//       });
 
-        System.out.println("list==============="+list.size());
+//        System.out.println("list==============="+list.size());
         //languages.stream().forEach(s-> System.out.println(s));
 //       languages.stream().filter(new Predicate() {
 //           @Override
@@ -60,7 +64,9 @@ public class Demo {
 //        }
 //        Map<Integer, User> map = list.stream().collect(Collectors.toMap(User::getAge, Function.identity()));
 //        System.out.println(map);
-
+        System.out.println(LocalDateTime.now().toString());
+        Date date = DateUtils.parseDate(LocalDateTime.now().toString(), "yyyy-MM-dd HH:mm");
+        System.out.println(date);
 
 
     }

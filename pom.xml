@@ -54,6 +54,10 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.commons.lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
