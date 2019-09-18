@@ -1,17 +1,13 @@
 package com.baomidou.mybatisplus.samples.quickstart;
-
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-
-
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.samples.quickstart.Common.PageModel;
 import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.domain.WindowTab;
+import com.baomidou.mybatisplus.samples.quickstart.mapper.LoanProductMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.WindowTabMapper;
 import com.baomidou.mybatisplus.samples.quickstart.service.*;
@@ -22,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
-
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -38,7 +33,11 @@ public class MybatisApplicationTests {
     @Autowired
     private CityConstantServiceImpl cityConstantService;
     @Autowired
+    private  LoanProductServiceImpl loanProductService;
+    @Autowired
     private WindowTabMapper windowTabMapper;
+    @Autowired
+    private LoanProductMapper loanProductMapper;
     @Test
     public void contextLoads() {
         List<User> selectList = userMapper.selectList(null);
@@ -51,6 +50,7 @@ public class MybatisApplicationTests {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.gt("age",20);
         List<User> selectList = userMapper.selectList(wrapper);
+
         System.out.println("人数为："+userMapper.selectCount(wrapper));
         for (User user : selectList) {
             System.out.println(user);
@@ -62,6 +62,7 @@ public class MybatisApplicationTests {
 
         Page<User> page1 = new Page<>(1, 2);
         IPage<User> userIPage = userMapper.selectPage(page1, null);
+
         System.out.println(userIPage.getTotal());
 
 
@@ -121,6 +122,7 @@ public class MybatisApplicationTests {
     @Test
     public  void insert(){
         User user = new User(6l,"Tom1",34,"www.12254");
+
         userMapper.insert(user);
 
     }
@@ -207,14 +209,13 @@ public class MybatisApplicationTests {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("name","Tom");
         User user = userMapper.selectOne(wrapper);
+
         //System.out.println(user);
         if(Optional.ofNullable(user).isPresent()){
             System.out.println( "用户已经存在");
         }
     }
 
-    @Autowired
-    private LoanProductService loanProductService;
     @Test
     public  void findList(){
         Page page = new Page<>(1, 3);
@@ -296,5 +297,12 @@ public class MybatisApplicationTests {
         IPage<WindowTab> windowTabIPage = windowTabMapper.selectPage(page, queryWrapper);
         windowTabIPage.getRecords().stream().forEach(windowTab -> System.out.println(windowTab));
 
+    }
+    @Test
+    public  void findLoanProduct(){
+        QueryWrapper<LoanProduct> wrapper = new QueryWrapper<>();
+        wrapper.eq("status","2");
+        wrapper.orderByAsc("level");
+        loanProductMapper.selectList(wrapper).stream().forEach(loanProduct -> System.out.println(loanProduct));
     }
 }

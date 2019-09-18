@@ -1,179 +1,515 @@
+
 package com.baomidou.mybatisplus.samples.quickstart.domain;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
-@Data
 public class LoanProduct {
-
-    @TableId(type = IdType.AUTO)
-    private Long id;
-
-    /**
-     * 创建时间
-     */
-    private Date createDate;
-
-    /**
-     * 修改时间
-     */
-    private Date updateDate;
-
-    /**
-     * 删除
-     */
-    private Integer del;
-
-    /**
-     * 产品名称
-     */
-    private String loanProductName;
-
-    /**
-     * 对接人
-     */
-    private String picker;
-
-
-    /**
-     * 产品类别
-     */
-    private Integer loanProductCategory;
-
-    /**
-     * API类型 0：普通 1：撞库 2：联登 3：撞库+联登
-     */
-    private Integer apiCategory;
-
-    /**
-     * 设备信息
-     */
-    private Integer isMobileSupport;
-
-    /**
-     * API代码-new
-     */
-    private String code;
-
-    /**
-     * 首页中心展示(0-展示1-不展示)
-     */
-    private Integer homeShow;
-
-    /**
-     * 首页列表展示-new
-     */
-    private Integer homeListShow;
-
-    /**
-     * 产品logo
-     */
-    private String loanProductLogo;
-
-    /**
-     * 产品状态(0:下线 1：隐藏 2：上线)
-     */
-    private Integer status;
-
-    /**
-     * 产品排序
-     */
-    private Integer level;
-
-    /**
-     * 可申请次数
-     */
-    private Integer allowApplySum;
+  private long id;
+  private long del;
+  private String loanProductName;
+  private String loanProductLogo;
+  private String settlementMethod;
+  private String description;
+  private String picker;
+  private String label;
+  private String labelcColor;
+  private double maxLoanMoney;
+  private double minLoanMoney;
+  private long maxLoanDay;
+  private long minLoanDay;
+  private String loanProductUrl;
+  private String loanProductTypeId;
+  private java.sql.Timestamp examineTime;
+  private String institutional;
+  private long status;
+  private long allowApplySum;
+  private long level;
+  private String institutionalPhone;
+  private long homeShow;
+  private String code;
+  private String applyCondition;
+  private long homeListShow;
+  private String interestRate;
+  private String loanProductIntroduce;
+  private long apiCategory;
+  private String listSlogan;
+  private String loanData;
+  private String moreInfo;
+  private String productTestUrl;
+  private long loanProductCategory;
+  private java.sql.Timestamp createDate;
+  private java.sql.Timestamp updateDate;
+  private long isMobileSupport;
+  private long isShowTreaty;
+  private long isDefaultCheck;
+  private String weTreatyName;
+  private String otherPartyName;
+  private String otherPartyUrl;
+  private long managerUserId;
+  private long displayModel;
+  private String platfrom;
+  private long cityLimit;
+  private long hide;
+  private long preposeCredit;
+  private long onlineStatus;
+  private java.sql.Timestamp onlineDate;
+  private long offlineStatus;
+  private java.sql.Timestamp offlineDate;
 
 
-    /**
-     * 产品推广链接
-     */
-    private String loanProductUrl;
+  public long getId() {
+    return id;
+  }
 
-    /**
-     * 产品撞库链接
-     */
-    private String productTestUrl;
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    /**
-     * 列表标语-new
-     */
-    private String listSlogan;
 
-    /**
-     * 最大带宽金额
-     */
-    private BigDecimal maxLoanMoney;
+  public long getDel() {
+    return del;
+  }
 
-    /**
-     * 最小带宽金额
-     */
-    private BigDecimal minLoanMoney;
+  public void setDel(long del) {
+    this.del = del;
+  }
 
-    /**
-     * 放款时间
-     */
-    private String loanData;
 
-    /**
-     * 产品标签
-     */
-    private String label;
+  public String getLoanProductName() {
+    return loanProductName;
+  }
 
-    /**
-     * 参考利率-new
-     */
-    private String interestRate;
+  public void setLoanProductName(String loanProductName) {
+    this.loanProductName = loanProductName;
+  }
 
-    /**
-     * 产品介绍-new
-     */
-    private String loanProductIntroduce;
 
-    /**
-     * 机构电话
-     */
-    private String institutionalPhone;
+  public String getLoanProductLogo() {
+    return loanProductLogo;
+  }
 
-    /**
-     * 申请条件-new
-     */
-    private String applyCondition;
+  public void setLoanProductLogo(String loanProductLogo) {
+    this.loanProductLogo = loanProductLogo;
+  }
 
-    /**
-     * 更多信息
-     */
-    private String moreInfo;
 
-    /**********************************************5.1.7新增加字段*************************************/
+  public String getSettlementMethod() {
+    return settlementMethod;
+  }
 
-    /**
-     * 是否展示协议 1：否 2：只展示我方协议 3：只展示对方协议 4：都展示
-     */
-    private Integer isShowTreaty;
+  public void setSettlementMethod(String settlementMethod) {
+    this.settlementMethod = settlementMethod;
+  }
 
-    /**
-     * 是否默认勾选 0：否 1：是
-     */
-    private Integer isDefaultCheck;
 
-    /**
-     * 我方协议名称
-     */
-    private String weTreatyName;
+  public String getDescription() {
+    return description;
+  }
 
-    /**
-     * 对方协议名称
-     */
-    private String otherPartyName;
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    /**
-     * 对方协议URL
-     */
-    private String otherPartyUrl;
+
+  public String getPicker() {
+    return picker;
+  }
+
+  public void setPicker(String picker) {
+    this.picker = picker;
+  }
+
+
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+
+  public String getLabelcColor() {
+    return labelcColor;
+  }
+
+  public void setLabelcColor(String labelcColor) {
+    this.labelcColor = labelcColor;
+  }
+
+
+  public double getMaxLoanMoney() {
+    return maxLoanMoney;
+  }
+
+  public void setMaxLoanMoney(double maxLoanMoney) {
+    this.maxLoanMoney = maxLoanMoney;
+  }
+
+
+  public double getMinLoanMoney() {
+    return minLoanMoney;
+  }
+
+  public void setMinLoanMoney(double minLoanMoney) {
+    this.minLoanMoney = minLoanMoney;
+  }
+
+
+  public long getMaxLoanDay() {
+    return maxLoanDay;
+  }
+
+  public void setMaxLoanDay(long maxLoanDay) {
+    this.maxLoanDay = maxLoanDay;
+  }
+
+
+  public long getMinLoanDay() {
+    return minLoanDay;
+  }
+
+  public void setMinLoanDay(long minLoanDay) {
+    this.minLoanDay = minLoanDay;
+  }
+
+
+  public String getLoanProductUrl() {
+    return loanProductUrl;
+  }
+
+  public void setLoanProductUrl(String loanProductUrl) {
+    this.loanProductUrl = loanProductUrl;
+  }
+
+
+  public String getLoanProductTypeId() {
+    return loanProductTypeId;
+  }
+
+  public void setLoanProductTypeId(String loanProductTypeId) {
+    this.loanProductTypeId = loanProductTypeId;
+  }
+
+
+  public java.sql.Timestamp getExamineTime() {
+    return examineTime;
+  }
+
+  public void setExamineTime(java.sql.Timestamp examineTime) {
+    this.examineTime = examineTime;
+  }
+
+
+  public String getInstitutional() {
+    return institutional;
+  }
+
+  public void setInstitutional(String institutional) {
+    this.institutional = institutional;
+  }
+
+
+  public long getStatus() {
+    return status;
+  }
+
+  public void setStatus(long status) {
+    this.status = status;
+  }
+
+
+  public long getAllowApplySum() {
+    return allowApplySum;
+  }
+
+  public void setAllowApplySum(long allowApplySum) {
+    this.allowApplySum = allowApplySum;
+  }
+
+
+  public long getLevel() {
+    return level;
+  }
+
+  public void setLevel(long level) {
+    this.level = level;
+  }
+
+
+  public String getInstitutionalPhone() {
+    return institutionalPhone;
+  }
+
+  public void setInstitutionalPhone(String institutionalPhone) {
+    this.institutionalPhone = institutionalPhone;
+  }
+
+
+  public long getHomeShow() {
+    return homeShow;
+  }
+
+  public void setHomeShow(long homeShow) {
+    this.homeShow = homeShow;
+  }
+
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
+  public String getApplyCondition() {
+    return applyCondition;
+  }
+
+  public void setApplyCondition(String applyCondition) {
+    this.applyCondition = applyCondition;
+  }
+
+
+  public long getHomeListShow() {
+    return homeListShow;
+  }
+
+  public void setHomeListShow(long homeListShow) {
+    this.homeListShow = homeListShow;
+  }
+
+
+  public String getInterestRate() {
+    return interestRate;
+  }
+
+  public void setInterestRate(String interestRate) {
+    this.interestRate = interestRate;
+  }
+
+
+  public String getLoanProductIntroduce() {
+    return loanProductIntroduce;
+  }
+
+  public void setLoanProductIntroduce(String loanProductIntroduce) {
+    this.loanProductIntroduce = loanProductIntroduce;
+  }
+
+
+  public long getApiCategory() {
+    return apiCategory;
+  }
+
+  public void setApiCategory(long apiCategory) {
+    this.apiCategory = apiCategory;
+  }
+
+
+  public String getListSlogan() {
+    return listSlogan;
+  }
+
+  public void setListSlogan(String listSlogan) {
+    this.listSlogan = listSlogan;
+  }
+
+
+  public String getLoanData() {
+    return loanData;
+  }
+
+  public void setLoanData(String loanData) {
+    this.loanData = loanData;
+  }
+
+
+  public String getMoreInfo() {
+    return moreInfo;
+  }
+
+  public void setMoreInfo(String moreInfo) {
+    this.moreInfo = moreInfo;
+  }
+
+
+  public String getProductTestUrl() {
+    return productTestUrl;
+  }
+
+  public void setProductTestUrl(String productTestUrl) {
+    this.productTestUrl = productTestUrl;
+  }
+
+
+  public long getLoanProductCategory() {
+    return loanProductCategory;
+  }
+
+  public void setLoanProductCategory(long loanProductCategory) {
+    this.loanProductCategory = loanProductCategory;
+  }
+
+
+  public java.sql.Timestamp getCreateDate() {
+    return createDate;
+  }
+
+  public void setCreateDate(java.sql.Timestamp createDate) {
+    this.createDate = createDate;
+  }
+
+
+  public java.sql.Timestamp getUpdateDate() {
+    return updateDate;
+  }
+
+  public void setUpdateDate(java.sql.Timestamp updateDate) {
+    this.updateDate = updateDate;
+  }
+
+
+  public long getIsMobileSupport() {
+    return isMobileSupport;
+  }
+
+  public void setIsMobileSupport(long isMobileSupport) {
+    this.isMobileSupport = isMobileSupport;
+  }
+
+
+  public long getIsShowTreaty() {
+    return isShowTreaty;
+  }
+
+  public void setIsShowTreaty(long isShowTreaty) {
+    this.isShowTreaty = isShowTreaty;
+  }
+
+
+  public long getIsDefaultCheck() {
+    return isDefaultCheck;
+  }
+
+  public void setIsDefaultCheck(long isDefaultCheck) {
+    this.isDefaultCheck = isDefaultCheck;
+  }
+
+
+  public String getWeTreatyName() {
+    return weTreatyName;
+  }
+
+  public void setWeTreatyName(String weTreatyName) {
+    this.weTreatyName = weTreatyName;
+  }
+
+
+  public String getOtherPartyName() {
+    return otherPartyName;
+  }
+
+  public void setOtherPartyName(String otherPartyName) {
+    this.otherPartyName = otherPartyName;
+  }
+
+
+  public String getOtherPartyUrl() {
+    return otherPartyUrl;
+  }
+
+  public void setOtherPartyUrl(String otherPartyUrl) {
+    this.otherPartyUrl = otherPartyUrl;
+  }
+
+
+  public long getManagerUserId() {
+    return managerUserId;
+  }
+
+  public void setManagerUserId(long managerUserId) {
+    this.managerUserId = managerUserId;
+  }
+
+
+  public long getDisplayModel() {
+    return displayModel;
+  }
+
+  public void setDisplayModel(long displayModel) {
+    this.displayModel = displayModel;
+  }
+
+
+  public String getPlatfrom() {
+    return platfrom;
+  }
+
+  public void setPlatfrom(String platfrom) {
+    this.platfrom = platfrom;
+  }
+
+
+  public long getCityLimit() {
+    return cityLimit;
+  }
+
+  public void setCityLimit(long cityLimit) {
+    this.cityLimit = cityLimit;
+  }
+
+
+  public long getHide() {
+    return hide;
+  }
+
+  public void setHide(long hide) {
+    this.hide = hide;
+  }
+
+
+  public long getPreposeCredit() {
+    return preposeCredit;
+  }
+
+  public void setPreposeCredit(long preposeCredit) {
+    this.preposeCredit = preposeCredit;
+  }
+
+
+  public long getOnlineStatus() {
+    return onlineStatus;
+  }
+
+  public void setOnlineStatus(long onlineStatus) {
+    this.onlineStatus = onlineStatus;
+  }
+
+
+  public java.sql.Timestamp getOnlineDate() {
+    return onlineDate;
+  }
+
+  public void setOnlineDate(java.sql.Timestamp onlineDate) {
+    this.onlineDate = onlineDate;
+  }
+
+
+  public long getOfflineStatus() {
+    return offlineStatus;
+  }
+
+  public void setOfflineStatus(long offlineStatus) {
+    this.offlineStatus = offlineStatus;
+  }
+
+
+  public java.sql.Timestamp getOfflineDate() {
+    return offlineDate;
+  }
+
+  public void setOfflineDate(java.sql.Timestamp offlineDate) {
+    this.offlineDate = offlineDate;
+  }
+
 }

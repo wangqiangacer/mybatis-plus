@@ -23,6 +23,7 @@ public class DuanZiController {
 
     @RequestMapping("/getDuanZi")
     public  void getCityFromURL(){
+
         try {
             for (int i = 0; i < 150; i++) {
                 URL url=new URL("http://duanziwang.com/page/"+(i+1));
@@ -42,4 +43,5 @@ public class DuanZiController {
             e.printStackTrace();
         }
     }
+
 }
