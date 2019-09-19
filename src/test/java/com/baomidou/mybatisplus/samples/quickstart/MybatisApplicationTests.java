@@ -305,4 +305,9 @@ public class MybatisApplicationTests {
         wrapper.orderByAsc("level");
         loanProductMapper.selectList(wrapper).stream().forEach(loanProduct -> System.out.println(loanProduct));
     }
+    @Test
+    public  void findUser(){
+        User user = userMapper.findOne(1);
+        System.out.println(user);
+    }
 }
