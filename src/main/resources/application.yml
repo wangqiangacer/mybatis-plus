@@ -10,9 +10,19 @@ spring:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#mybatis-plus:
-#  mapper-locations: classpath:mapping/*.xml
-#  type-aliases-package: com.baomidou.mybatisplus.samples.quickstart.domain
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    use-actual-param-name: true
+mybatis-plus:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.baomidou.mybatisplus.samples.quickstart.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    use-actual-param-name: true
+
+#  打印sql执行语句
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus:
+          samples:
+            quickstart:
+              mapper : debug

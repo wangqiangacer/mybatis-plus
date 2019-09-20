@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.samples.quickstart.domain.WindowTab;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.LoanProductMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.WindowTabMapper;
+import com.baomidou.mybatisplus.samples.quickstart.request.UserRequest;
 import com.baomidou.mybatisplus.samples.quickstart.service.*;
 import com.jayway.jsonpath.Criteria;
 import org.junit.Test;
@@ -309,5 +310,50 @@ public class MybatisApplicationTests {
     public  void findUser(){
         User user = userMapper.findOne(1);
         System.out.println(user);
+    }
+
+    @Test
+    public  void selectUser(){
+        User user = userMapper.selectUser(1);
+        System.out.println(user);
+    }
+
+    @Test
+    public  void findCondition1(){
+        UserRequest request = new UserRequest();
+        //request.setName("Jack");
+        //request.setAge(23);
+        request.setId(4l);
+        User user = userMapper.findConditon(request);
+        System.out.println(user);
+    }
+
+    @Test
+    public  void updateUser(){
+        UserRequest request = new UserRequest();
+        request.setId(4l);
+        request.setName("Sandy666");
+        //request.setAge(23);
+         userMapper.updateUser(request);
+    }
+    @Test
+    public  void findIds(){
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        List<User> userList = userMapper.findUserIds(list);
+        userList.stream().forEach(user -> System.out.println(user));
+    }
+    @Test
+    public  void findUserMap(){
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(3);
+        Map map = new HashMap<>();
+        map.put("name","Jack");
+        map.put("list",list);
+        List<User> userList = userMapper.findUserMap(map);
+        userList.stream().forEach(user -> System.out.println(user));
     }
 }

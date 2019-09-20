@@ -5,4 +5,104 @@
 <!--    <select id="findOne" resultType="com.baomidou.mybatisplus.samples.quickstart.domain.User" statementType="CALLABLE">-->
 <!--    {call findUser(#{id, jdbcType = INTEGER, mode = IN})}-->
 <!--    </select>-->
+
+        <sql id="tables">
+            id,name,age,email
+        </sql>
+    <select id="selectUser" parameterType="java.lang.Integer" resultType="User">
+        select
+        <include refid="tables"/>
+        from user where id=#{id}
+    </select>
+
+    <select id="findConditon" resultType="User">
+        select  * from user
+    <trim prefix="where" prefixOverrides="and">
+        <if test="request.name!=null and request.name!= ''">
+            name =#{request.name}
+        </if>
+        <if test="request.age!=null and request.age!=''">
+            and age =#{request.age}
+        </if>
+        <if test="request.id!=null and request.id !='' ">
+            and id =#{request.id}
+        </if>
+    </trim>
+    </select>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="request.name!=null and request.name!=''">name = #{request.name}</if>
+            <if test="request.age!=null and request.age!=''">age = #{request.age}</if>
+        </set>
+        where id =#{request.id}
+    </update>
+
+    <select id="findUserIds" resultType="User">
+    select * from user where id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="findUserMap"  parameterType="java.util.HashMap" resultType="User">
+        select * from user where name = #{name} and id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
 </mapper>
+
+
+        <!--
+         *** choose  when otherwise 的使用 注意 空字符串***
+          select * from user where 1=1-->
+        <!--    <choose>-->
+        <!--        <when test="request.name!=null and request.name != ''">-->
+        <!--            and name = #{request.name}-->
+        <!--        </when>-->
+        <!--        <when test="request.age!=null and request.age != ''">-->
+        <!--        and age = #{request.age}-->
+        <!--        </when>-->
+        <!--        <otherwise>-->
+        <!--            and id = #{request.id}-->
+        <!--        </otherwise>-->
+        <!--    </choose>-->
+
+
+
+
+        <!--
+
+        ****使用<where>标签***
+          select * from user-->
+        <!--<where>-->
+        <!--<if test="request.name!=null and request.name!= ''">-->
+        <!--    name =#{request.name}-->
+        <!--</if>-->
+        <!--<if test="request.age!=null and request.age!=''">-->
+        <!--    and age =#{request.age}-->
+        <!--</if>-->
+        <!--<if test="request.id!=null ">-->
+        <!--    and id =#{request.id}-->
+        <!--</if>-->
+        <!--</where>-->
+
+
+<!--  使用trim 标签
+select  * from user-->
+<!--        <trim prefix="where" prefixOverrides="and">-->
+<!--        <if test="request.name!=null and request.name!= ''">-->
+<!--            name =#{request.name}-->
+<!--        </if>-->
+<!--        <if test="request.age!=null and request.age!=''">-->
+<!--            and age =#{request.age}-->
+<!--        </if>-->
+<!--        <if test="request.id!=null and request.id !='' ">-->
+<!--            and id =#{request.id}-->
+<!--        </if>-->
+<!--        </trim>-->
+
+
