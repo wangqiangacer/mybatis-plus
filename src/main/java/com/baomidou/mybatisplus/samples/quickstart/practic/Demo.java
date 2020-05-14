@@ -1,12 +1,9 @@
-package com.baomidou.mybatisplus.samples.quickstart.Practic;
+package com.baomidou.mybatisplus.samples.quickstart.practic;
 
 import com.baomidou.mybatisplus.samples.quickstart.utils.DateUtils;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 public class Demo {
     public static void main(String[] args) {

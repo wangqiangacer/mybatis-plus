@@ -1,4 +1,4 @@
-package com.baomidou.mybatisplus.samples.quickstart.Practic;
+package com.baomidou.mybatisplus.samples.quickstart.practic;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class JsonDemo {

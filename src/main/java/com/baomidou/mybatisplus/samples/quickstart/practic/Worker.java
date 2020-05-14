@@ -1,9 +1,9 @@
-package com.baomidou.mybatisplus.samples.quickstart.Practic;
+package com.baomidou.mybatisplus.samples.quickstart.practic;
 
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
-import static com.baomidou.mybatisplus.samples.quickstart.Practic.CountDownLatchDemo.sdf;
+import static com.baomidou.mybatisplus.samples.quickstart.practic.CountDownLatchDemo.sdf;
 
 
 public class Worker extends Thread {

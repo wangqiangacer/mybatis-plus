@@ -1,6 +1,4 @@
-package com.baomidou.mybatisplus.samples.quickstart.Practic;
-
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+package com.baomidou.mybatisplus.samples.quickstart.practic;
 
 import java.sql.*;
 

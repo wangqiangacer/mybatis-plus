@@ -1,4 +1,4 @@
-package com.baomidou.mybatisplus.samples.quickstart.Practic;
+package com.baomidou.mybatisplus.samples.quickstart.practic;
 
 public class GcDemo {
     public static void main(String[] args) {

@@ -39,6 +39,37 @@ public class MybatisApplicationTests {
     private WindowTabMapper windowTabMapper;
     @Autowired
     private LoanProductMapper loanProductMapper;
+
+    @Autowired
+    private  UserSerivce userSerivce;
+
+
+
+    @Test
+    public  void testUser(){
+        userMapper.selectList(null).forEach(user -> {
+            System.out.println(user);
+        });
+    }
+
+    @Test
+    public  void  batchInsertUser(){
+        ArrayList<User> list = new ArrayList<>(1000);
+        for (int i = 2; i < 1000; i++) {
+            User user = new User();
+            user.setAge(21);
+            user.setEmail("www.baidu.com");
+            user.setName("xiaoming");
+            list.add(user);
+
+        }
+        boolean b = userServiceimpl.saveBatch(list);
+        if (b){
+            System.out.println("批量插入成功");
+        }else {
+            System.out.println("批量插入失败");
+        }
+    }
     @Test
     public void contextLoads() {
         List<User> selectList = userMapper.selectList(null);
@@ -122,7 +153,7 @@ public class MybatisApplicationTests {
     }
     @Test
     public  void insert(){
-        User user = new User(6l,"Tom1",34,"www.12254");
+        User user = new User(6L,"Tom1",34,"www.12254");
 
         userMapper.insert(user);
 
@@ -171,7 +202,7 @@ public class MybatisApplicationTests {
     }
     @Test
     public  void updateById(){
-        User user = new User(1l, "xioaming", 23, "www.baidu.com");
+        User user = new User(1L, "xioaming", 23, "www.baidu.com");
        userMapper.updateById(user);
 
     }
