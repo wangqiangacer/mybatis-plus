@@ -4,9 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("all")
@@ -16,10 +17,20 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements U
 
 
 
+    @Autowired
+    private  UserMapper userMapper;
+
     @Override
     public boolean insertBatch(List<User> userList) {
 
-
         return false;
+    }
+
+    @Override
+    public User selectByNameAge(String name, Integer age) {
+        if (StringUtils.isNoneBlank(name)){
+          return   userMapper.selectByNameAndAge(name,age);
+        }
+        return null;
     }
 }

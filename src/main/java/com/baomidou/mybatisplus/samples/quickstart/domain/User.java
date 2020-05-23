@@ -14,7 +14,6 @@ import org.apache.ibatis.type.Alias;
 public class User {
     @TableId(type = IdType.ID_WORKER)
     private  Long id;
-
     private String name;
     private int age;
    private  String email;

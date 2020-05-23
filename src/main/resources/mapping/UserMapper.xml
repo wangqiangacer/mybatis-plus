@@ -52,6 +52,9 @@
             #{item}
         </foreach>
     </select>
+    <select id="selectByNameAndAge" resultType="com.baomidou.mybatisplus.samples.quickstart.domain.User">
+        select  * from user where name =${name} and age=${age}
+    </select>
 
 </mapper>
 

@@ -1,8 +1,6 @@
 package com.baomidou.mybatisplus.samples.quickstart.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.request.UserRequest;
 import org.apache.ibatis.annotations.Param;
@@ -24,6 +22,9 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> findUserIds(List<Integer> ids);
 
     List<User> findUserMap(Map paramMap);
+
+
+    User selectByNameAndAge(@Param("name") String name,@Param("age") Integer age);
 
 
 }
