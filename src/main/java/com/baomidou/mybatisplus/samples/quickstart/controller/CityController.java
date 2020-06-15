@@ -1,9 +1,8 @@
 package com.baomidou.mybatisplus.samples.quickstart.controller;
 
 import com.baomidou.mybatisplus.samples.quickstart.domain.CityConstant;
-import com.baomidou.mybatisplus.samples.quickstart.domain.DuanZi;
-import com.baomidou.mybatisplus.samples.quickstart.service.CityConstantServiceImpl;
-import com.baomidou.mybatisplus.samples.quickstart.service.DuanZiImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.CityConstantServiceImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.DuanZiImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

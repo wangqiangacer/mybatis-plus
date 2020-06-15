@@ -1,7 +1,7 @@
-package com.baomidou.mybatisplus.samples.quickstart;
+package com.baomidou.mybatisplus.samples.quickstart.controller;
 
 import com.baomidou.mybatisplus.samples.quickstart.domain.DuanZi;
-import com.baomidou.mybatisplus.samples.quickstart.service.DuanZiImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.DuanZiImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

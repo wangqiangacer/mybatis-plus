@@ -1,11 +1,16 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://114.55.146.111:3306/lkdb-bak?useSSL=false&useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: root
+    password: dxrOTD!O2019
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  data:
+    mongodb:
+      host: 62.234.17.74
+      port: 27017
+      database: test
 
 mybatis:
   configuration:

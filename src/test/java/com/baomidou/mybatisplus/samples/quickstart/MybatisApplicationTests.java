@@ -1,17 +1,23 @@
 package com.baomidou.mybatisplus.samples.quickstart;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.samples.quickstart.Common.PageModel;
 import com.baomidou.mybatisplus.samples.quickstart.domain.LoanProduct;
+import com.baomidou.mybatisplus.samples.quickstart.domain.TestUser;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.domain.WindowTab;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.LoanProductMapper;
+import com.baomidou.mybatisplus.samples.quickstart.mapper.TestUserMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.WindowTabMapper;
 import com.baomidou.mybatisplus.samples.quickstart.request.UserRequest;
 import com.baomidou.mybatisplus.samples.quickstart.service.*;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.CityConstantServiceImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.LoanProductServiceImpl;
+import com.baomidou.mybatisplus.samples.quickstart.service.impl.UserServiceImpl;
 import com.jayway.jsonpath.Criteria;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +40,7 @@ public class MybatisApplicationTests {
     @Autowired
     private CityConstantServiceImpl cityConstantService;
     @Autowired
-    private  LoanProductServiceImpl loanProductService;
+    private LoanProductServiceImpl loanProductService;
     @Autowired
     private WindowTabMapper windowTabMapper;
     @Autowired
@@ -43,13 +49,17 @@ public class MybatisApplicationTests {
     @Autowired
     private  UserSerivce userSerivce;
 
+    @Autowired
+    private TestUserMapper testUserMapper;
+
 
 
     @Test
     public  void testUser(){
-        userMapper.selectList(null).forEach(user -> {
-            System.out.println(user);
-        });
+        Page<TestUser> page = new Page<>(1, 10);
+        QueryWrapper<TestUser> wrapper = new QueryWrapper<TestUser>().orderByDesc(" `id`");
+        IPage<TestUser> testUserIPage = testUserMapper.selectPage(page, wrapper);
+        System.out.println(JSONObject.toJSONString(testUserIPage.getRecords()));
     }
 
     @Test

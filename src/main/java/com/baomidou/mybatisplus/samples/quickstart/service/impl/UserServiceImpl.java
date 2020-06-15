@@ -1,8 +1,9 @@
-package com.baomidou.mybatisplus.samples.quickstart.service;
+package com.baomidou.mybatisplus.samples.quickstart.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.samples.quickstart.domain.User;
 import com.baomidou.mybatisplus.samples.quickstart.mapper.UserMapper;
+import com.baomidou.mybatisplus.samples.quickstart.service.UserSerivce;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
